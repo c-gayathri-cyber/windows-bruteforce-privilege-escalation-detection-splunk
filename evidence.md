@@ -7,9 +7,9 @@ This document records the security events generated and investigated during the 
 | Component | Value |
 |---|---|
 | Host machine | Windows Host |
-| Host IP | Host-only host IP |
+| Host IP | 192.168.56.1 |
 | Target VM | SOC-Windows-Lab |
-| Target VM IP | Host-only VM IP |
+| Target VM IP | 192.168.56.102 |
 | Network type | Host-only |
 | SMB port | TCP 445 |
 
@@ -23,7 +23,7 @@ This document records the security events generated and investigated during the 
 |---|---|
 | Failed login Event ID | 4625 |
 | Successful login Event ID | 4624 |
-| Source IP | Host-only host IP |
+| Source IP | 192.168.56.1 |
 | Logon Type | 3 |
 | Failure Status | `0xC000006D` |
 | Failure SubStatus | `0xC000006A` |
@@ -38,7 +38,7 @@ This document records the security events generated and investigated during the 
 | Failed login Event ID | 4625 |
 | Successful login Event ID | 4624 |
 | Account | `bruteuser` |
-| Source IP | Host-only host IP |
+| Source IP | 192.168.56.1 |
 | Failed attempt timestamp | 2026-11-21 00:08:18.580 |
 | Successful login timestamp | 2026-11-21 00:09:36.665 |
 | Previous failures detected | 1 |
