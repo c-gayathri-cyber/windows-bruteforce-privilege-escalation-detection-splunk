@@ -78,6 +78,7 @@ Verified alert activity in Splunk Triggered Alerts.
 
 - The project was performed in an isolated virtual lab.
 - Privilege elevation was simulated through controlled group membership modification, not vulnerability exploitation.
+- Alerts were configured as scheduled searches rather than real-time detections.
 - Repeated scheduled alert triggers can cause alert fatigue.
 - Production deployment should include alert suppression, deduplication and improved correlation logic.
 
