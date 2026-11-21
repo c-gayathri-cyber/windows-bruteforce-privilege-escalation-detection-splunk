@@ -6,7 +6,7 @@ This document records the security events generated and investigated during the 
 
 | Component | Value |
 |---|---|
-| Host machine | DEVIL |
+| Host machine | Windows Host |
 | Host IP | 192.168.56.1 |
 | Target VM | SOC-Windows-Lab |
 | Target VM IP | 192.168.56.102 |
@@ -65,9 +65,9 @@ This document records the security events generated and investigated during the 
 | Target group | Administrators |
 | Changed by | SOCUser |
 | Event timestamp | 2026-11-20 23:52:10.784 |
-| Member SID | S-1-5-21-505756408-1876722126-2513164340-1003 |
+| Member SID | Matched to testuser's local account SID (full SID omitted) |
 
-**Finding:** Event ID 4732 confirmed that the test account was added to the local Administrators group. The member SID was matched with the SID of testuser.
+**Finding:** Event ID 4732 confirmed that the test account was added to the local Administrators group. The member SID was matched with the SID of testuser during investigation.
 
 This demonstrates controlled privilege elevation through local group membership modification, not exploitation of a vulnerability.
 
