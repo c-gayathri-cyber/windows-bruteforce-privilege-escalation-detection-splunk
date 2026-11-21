@@ -7,9 +7,9 @@ This document records the security events generated and investigated during the 
 | Component | Value |
 |---|---|
 | Host machine | Windows Host |
-| Host IP | 192.168.56.1 |
+| Host IP | Host-only host IP |
 | Target VM | SOC-Windows-Lab |
-| Target VM IP | 192.168.56.102 |
+| Target VM IP | Host-only VM IP |
 | Network type | Host-only |
 | SMB port | TCP 445 |
 
@@ -17,16 +17,16 @@ This document records the security events generated and investigated during the 
 
 ## 2. Brute-Force Authentication Evidence
 
-**Test account:** bruteuser
+**Test account:** `bruteuser`
 
 | Field | Observed value |
 |---|---|
 | Failed login Event ID | 4625 |
 | Successful login Event ID | 4624 |
-| Source IP | 192.168.56.1 |
+| Source IP | Host-only host IP |
 | Logon Type | 3 |
-| Failure Status | 0xC000006D |
-| Failure SubStatus | 0xC000006A |
+| Failure Status | `0xC000006D` |
+| Failure SubStatus | `0xC000006A` |
 | Authentication | NTLM |
 
 **Finding:** Controlled failed SMB authentication attempts were generated from the host machine. Windows Security logs recorded the failures with the expected source IP and Logon Type 3.
@@ -37,8 +37,8 @@ This document records the security events generated and investigated during the 
 |---|---|
 | Failed login Event ID | 4625 |
 | Successful login Event ID | 4624 |
-| Account | bruteuser |
-| Source IP | 192.168.56.1 |
+| Account | `bruteuser` |
+| Source IP | Host-only host IP |
 | Failed attempt timestamp | 2026-11-21 00:08:18.580 |
 | Successful login timestamp | 2026-11-21 00:09:36.665 |
 | Previous failures detected | 1 |
@@ -50,8 +50,8 @@ This document records the security events generated and investigated during the 
 | Field | Observed value |
 |---|---|
 | Event ID | 4720 |
-| Created account | testuser |
-| Created by | SOCUser |
+| Created account | `testuser` |
+| Created by | `SOCUser` |
 | Event timestamp | 2026-11-20 23:51:49.436 |
 
 **Finding:** Windows Security Event ID 4720 confirmed the creation of the test account.
@@ -61,13 +61,13 @@ This document records the security events generated and investigated during the 
 | Field | Observed value |
 |---|---|
 | Event ID | 4732 |
-| Added account | testuser |
+| Added account | `testuser` |
 | Target group | Administrators |
-| Changed by | SOCUser |
+| Changed by | `SOCUser` |
 | Event timestamp | 2026-11-20 23:52:10.784 |
 | Member SID | Matched to testuser's local account SID (full SID omitted) |
 
-**Finding:** Event ID 4732 confirmed that the test account was added to the local Administrators group. The member SID was matched with the SID of testuser during investigation.
+**Finding:** Event ID 4732 confirmed that the test account was added to the local Administrators group. The member SID was matched with the SID of `testuser` during investigation.
 
 This demonstrates controlled privilege elevation through local group membership modification, not exploitation of a vulnerability.
 
@@ -80,7 +80,7 @@ This demonstrates controlled privilege elevation through local group membership 
 | Windows New Account Creation Detection | Triggered and verified |
 | Windows - Local Administrators Group Change | Triggered and verified |
 
-All four alerts were configured as scheduled searches and their triggering activity was observed in Splunk Triggered Alerts.
+All four alerts were configured as scheduled searches, and their triggering activity was observed in Splunk Triggered Alerts.
 
 ## 7. Log Forwarding Verification
 
@@ -99,7 +99,7 @@ Observed event counts during validation:
 | 4720 | 5 |
 | 4732 | 11 |
 
-These counts represent the observed lab data at the time of validation, not necessarily unique test events.
+These counts represent the observed lab data at the time of validation and are not necessarily unique events generated during the controlled tests.
 
 ## 8. Investigation Conclusion
 
