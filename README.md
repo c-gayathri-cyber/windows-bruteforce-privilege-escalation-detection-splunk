@@ -24,8 +24,8 @@ The lab uses a Windows 11 virtual machine as the target system and a host machin
 | Target Machine | Windows 11 Virtual Machine |
 | Virtualization | Oracle VirtualBox |
 | Network Mode | Host-only |
-| Host Machine IP | 192.168.56.1 |
-| Target VM IP | 192.168.56.102 |
+| Host Machine IP | Host-only host IP |
+| Target VM IP | Host-only VM IP |
 | Log Source | Windows Security Event Logs |
 | Data Source | XmlWinEventLog:Security |
 
